@@ -62,4 +62,17 @@ public class UserRegistrationTest {
         boolean result=UserRegistration.validatePassword("kajal234");
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void allEmailSamplesCorrectTest() {
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc@yahoo.com"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc-100@yahoo.com"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc.100@yahoo.com"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc111@abc.com"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc-100@abc.net"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc.100@abc.com.au"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc@1.com"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc@gmail.com.com"));
+        Assert.assertTrue(UserRegistration.validateAllEmailSamples("abc+100@gmail.com.com"));
+    }
 }

@@ -33,6 +33,12 @@ public class UserRegistration {
         return pattern.matcher(password).matches();
     }
 
+    public static boolean validateAllEmailSamples(String email) {
+        String regex = "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(email).matches();
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Problem");
         String testName1 = "Kajal";
