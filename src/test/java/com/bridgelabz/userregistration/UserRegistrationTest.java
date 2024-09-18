@@ -39,4 +39,15 @@ public class UserRegistrationTest {
         boolean result=UserRegistration.validateEmail("abc.com");
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void PhoneNumberCorrectTest() {
+        boolean result=UserRegistration.validatePhone("91 8878564543");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void PhoneNumberIncorrectTest() {
+        boolean result=UserRegistration.validatePhone("5436546546");
+        Assert.assertFalse(result);
+    }
 }

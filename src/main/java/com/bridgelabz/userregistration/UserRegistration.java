@@ -21,8 +21,14 @@ public class UserRegistration {
         return pattern.matcher(email).matches();
     }
 
-    public static void main(String[] args)
-    {
+    public static boolean validatePhone(String phone) {
+        String regex = "(0|91)?[-\\s]?[6-9][0-9]{9}";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(phone).matches();
+    }
+
+
+    public static void main(String[] args) {
         System.out.println("Welcome to User Registration Problem");
         String testName1 = "Kajal";
         System.out.println(testName1 + " is " + (isValidFirstName(testName1) ? "a valid" : "an invalid") + " first name.");
@@ -30,5 +36,7 @@ public class UserRegistration {
         System.out.println(lastName + " is " + (isValidLastName(lastName) ? "a valid" : "an invalid") + " last name.");
         String testEmail1 = "abc.xyz@bl.co.in";
         System.out.println(testEmail1 + " is " + (validateEmail(testEmail1) ? "a valid" : "an invalid") + " email address.");
+        String testPhone = "91 9876543210";
+        System.out.println(testPhone + " is " + (validatePhone(testPhone) ? "a valid" : "an invalid") + " phone number.");
     }
 }
