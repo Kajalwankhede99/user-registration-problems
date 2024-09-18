@@ -27,6 +27,11 @@ public class UserRegistration {
         return pattern.matcher(phone).matches();
     }
 
+    public static boolean validatePassword(String password) {
+        String regex = "((?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%]).{8,20})";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(password).matches();
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Problem");
@@ -38,5 +43,7 @@ public class UserRegistration {
         System.out.println(testEmail1 + " is " + (validateEmail(testEmail1) ? "a valid" : "an invalid") + " email address.");
         String testPhone = "91 9876543210";
         System.out.println(testPhone + " is " + (validatePhone(testPhone) ? "a valid" : "an invalid") + " phone number.");
+        String testPassword = "Password@123";
+        System.out.println(testPassword + " is " + (validatePassword(testPassword) ? "a valid" : "an invalid") + " password.");
     }
 }

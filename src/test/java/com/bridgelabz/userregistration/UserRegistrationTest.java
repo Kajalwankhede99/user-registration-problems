@@ -50,4 +50,16 @@ public class UserRegistrationTest {
         boolean result=UserRegistration.validatePhone("5436546546");
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void PasswordCorrectTest() {
+        boolean result=UserRegistration.validatePassword("Kajal@123");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void PasswordIncorrectTest() {
+        boolean result=UserRegistration.validatePassword("kajal234");
+        Assert.assertFalse(result);
+    }
 }
