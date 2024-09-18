@@ -15,6 +15,12 @@ public class UserRegistration {
         return pattern.matcher(lastName).matches();
     }
 
+    public static boolean validateEmail(String email) {
+        String regex = "[a-zA-Z0-9_.]*[-]*[+]*[a-zA-Z0-9]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(email).matches();
+    }
+
     public static void main(String[] args)
     {
         System.out.println("Welcome to User Registration Problem");
@@ -22,5 +28,7 @@ public class UserRegistration {
         System.out.println(testName1 + " is " + (isValidFirstName(testName1) ? "a valid" : "an invalid") + " first name.");
         String lastName = "Wankhede";
         System.out.println(lastName + " is " + (isValidLastName(lastName) ? "a valid" : "an invalid") + " last name.");
+        String testEmail1 = "abc.xyz@bl.co.in";
+        System.out.println(testEmail1 + " is " + (validateEmail(testEmail1) ? "a valid" : "an invalid") + " email address.");
     }
 }
