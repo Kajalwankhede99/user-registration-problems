@@ -3,6 +3,7 @@ package com.bridgelabz.userregistration;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
+
     public static boolean isValidFirstName(String firstName) {
         String regex = "[A-Z][a-z]{3,}";
         Pattern pattern = Pattern.compile(regex);
