@@ -29,14 +29,16 @@ public class UserRegistrationTest {
         Assert.assertFalse(result);
     }
 
-    @Test
-    public void givenEmail_WhenValid_ShouldReturn_True() {
+    @ParameterizedTest
+    @ValueSource(strings = {"abc@yahoo.com","abc-100@yahoo.com"})
+    public void givenEmail_WhenValid_ShouldReturn_True(String email) {
         boolean result=UserRegistration.validateEmail("abc.xyz@bl.co.in");
         Assert.assertTrue(result);
     }
 
-    @Test
-    public void givenEmail_WhenValid_ShouldReturn_False() {
+    @ParameterizedTest
+    @ValueSource(strings = {"abc","abc@.com.my"})
+    public void givenEmail_WhenValid_ShouldReturn_False(String email) {
         boolean result=UserRegistration.validateEmail("abc.com");
         Assert.assertFalse(result);
     }
