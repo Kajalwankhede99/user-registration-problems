@@ -4,43 +4,60 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-    public static boolean isValidFirstName(String firstName) {
+    public static boolean isValidFirstName(String firstName) throws InvalidUserDetailsException {
         String regex = "[A-Z][a-z]{3,}";
         Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(firstName).matches();
+        if (!pattern.matcher(firstName).matches()) {
+            throw new InvalidUserDetailsException("Invalid First Name: " + firstName);
+        }
+        return true;
     }
 
-    public static boolean isValidLastName(String lastName) {
+    public static boolean isValidLastName(String lastName) throws InvalidUserDetailsException {
         String regex = "[A-Z][a-z]{3,}";
         Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(lastName).matches();
+        if (!pattern.matcher(lastName).matches()) {
+            throw new InvalidUserDetailsException("Invalid Last Name: " + lastName);
+        }
+        return true;
     }
-
-    public static boolean validateEmail(String email) {
+    public static boolean validateEmail(String email) throws InvalidUserDetailsException  {
         String regex = "[a-zA-Z0-9_.]*[-]*[+]*[a-zA-Z0-9]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+";
         Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(email).matches();
+        if (!pattern.matcher(email).matches()) {
+            throw new InvalidUserDetailsException("Invalid Last Name: " + email);
+        }
+        return true;
     }
 
-    public static boolean validatePhone(String phone) {
+    public static boolean validatePhone(String phone) throws InvalidUserDetailsException {
         String regex = "(0|91)?[-\\s]?[6-9][0-9]{9}";
         Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(phone).matches();
+        if (!pattern.matcher(phone).matches()) {
+            throw new InvalidUserDetailsException("Invalid Phone Number: " + phone);
+        }
+        return true;
     }
 
-    public static boolean validatePassword(String password) {
+    public static boolean validatePassword(String password) throws InvalidUserDetailsException {
         String regex = "((?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%]).{8,20})";
         Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(password).matches();
+        if (!pattern.matcher(password).matches()) {
+            throw new InvalidUserDetailsException("Invalid Password: " + password);
+        }
+        return true;
     }
 
-    public static boolean validateAllEmailSamples(String email) {
+    public static boolean validateAllEmailSamples(String email) throws InvalidUserDetailsException {
         String regex = "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+";
         Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(email).matches();
+        if (!pattern.matcher(email).matches()) {
+            throw new InvalidUserDetailsException("Invalid Email Sample: " + email);
+        }
+        return true;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidUserDetailsException {
         System.out.println("Welcome to User Registration Problem");
         String testName1 = "Kajal";
         System.out.println(testName1 + " is " + (isValidFirstName(testName1) ? "a valid" : "an invalid") + " first name.");
